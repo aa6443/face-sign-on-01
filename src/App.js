@@ -4,6 +4,23 @@ import React, { useState } from "react";
 import Axios from "axios";
 import Registration from "./components/Registration.jsx";
 import Login from "./components/Login.jsx";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Home from "./Home.js";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Login />,
+  },
+  {
+    path: "register",
+    element: <Registration />,
+  },
+  {
+    path: "home",
+    element: <Home />,
+  },
+]);
 
 function App() {
   const [currentForm, setCurrentForm] = useState("login");
@@ -14,24 +31,29 @@ function App() {
   };
 
   const getData = async () => {
-    const res = await Axios.post("https://a2xt2utnve-lingering-wind-5756.fly.dev/", {
-      firstName: "Fred",
-      lastName: "Flintstone"
-    });
+    const res = await Axios.post(
+      "https://a2xt2utnve-lingering-wind-5756.fly.dev/",
+      {
+        firstName: "Fred",
+        lastName: "Flintstone",
+      }
+    );
     setData(res.data);
   };
 
   return (
-    <main>
-      <div className="App">
-        {currentForm === "login" ? (
-          <Login onFormSwitch={toggleForm} onGetData={getData} />
-        ) : (
-          <Registration onFormSwitch={toggleForm} onGetData={getData} />
-        )}
-        {data && <p>Data: {data}</p>}
-      </div>
-    </main>
+    // <main>
+    //   <div className="App">
+    //     {currentForm === "login" ? (
+    //       <Login onFormSwitch={toggleForm} onGetData={getData} />
+    //     ) : (
+    //       <Registration onFormSwitch={toggleForm} onGetData={getData} />
+    //     )}
+    //     {data && <p>Data: {data}</p>}
+    //   </div>
+    // </main>
+
+    <RouterProvider router={router} />
   );
 }
 
