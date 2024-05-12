@@ -10,7 +10,7 @@ import About from "./components/About.jsx";
 import Form from "./components/Form.jsx";
 import Integration from "./components/Integration.jsx";
 import Home from "./components/Home.jsx";
-import LogOut from "./components/LogOut.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -23,16 +23,16 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "register",
+        path: "/register",
         element: <Registration />,
       },
 
       {
-        path: "about",
+        path: "/about",
         element: <About />,
       },
       {
-        path: "integration",
+        path: "/integration",
         element: <Integration />,
       },
       {
@@ -40,8 +40,12 @@ const router = createBrowserRouter([
         element: <Form />,
       },
       {
-        path: "/logout",
-        element: <LogOut />,
+        path: "logout",
+        element: <Login />,
+      },
+      {
+        path: "login",
+        element: <Login />,
       },
     ],
   },

@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 const RegistrationForm = (props) => {
   const [email, setEmail] = useState("");
   // const [name,setName] = useState('');
@@ -87,11 +87,13 @@ const RegistrationForm = (props) => {
           >
             Submit
           </button>
-          <button onClick={() => props.onFormSwitch("submit")}></button>
+          {/* <button onClick={() => props.onFormSwitch("submit")}></button> */}
         </form>
-        <button onClick={() => props.onFormSwitch("login")}>
+        <Link to="/login">
+        
           Already have account?Login here
-        </button>
+      
+        </Link>
       </div>
     </div>
   );
