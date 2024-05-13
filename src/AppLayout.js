@@ -1,10 +1,17 @@
 import { NavBar } from "./components/NavBar";
-import { Link, Outlet } from "react-router-dom";
+import { useLocation, Outlet } from "react-router-dom";
 
 const AppLayout = () => {
+  const { pathname } = useLocation();
+  console.log("pathname", pathname);
+
+
   return (
     <>
-      <NavBar />
+      {
+        (pathname !== "/register" && pathname !== "/login")
+        && <NavBar />
+      }
       <main>
         <Outlet />
       </main>
